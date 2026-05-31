@@ -15,7 +15,8 @@ export default function Dashboard() {
   useEffect(() => {
     Promise.all([tasksApi.getAll({ limit: 50 }), projectsApi.getAll()])
       .then(([t, p]) => {
-        setTasks(t.data.data.tasks || []);
+        const taskData = t.data.data;
+        setTasks(Array.isArray(taskData)? taskData : (taskData?.tasks || []));
         setProjects(p.data.data || []);
       }).finally(() => setLoading(false));
   }, []);

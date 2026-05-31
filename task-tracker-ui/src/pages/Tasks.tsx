@@ -143,8 +143,10 @@ export default function Tasks() {
     try {
       const params = Object.fromEntries(Object.entries(filters).filter(([_, v]) => v));
       const [t, p] = await Promise.all([tasksApi.getAll({ ...params, limit: 50 }), projectsApi.getAll()]);
-      setTasks(t.data.data.tasks || []);
-      setTotal(t.data.meta?.total || 0);
+      const taskData = t.data.data;
+      const TaskList = Array.isArray(taskData) ? taskData : (taskData?.tasks || []);
+      setTasks(TaskList);
+      setTotal(t.data.meta?.total || TaskList.length);
       setProjects(p.data.data || []);
       if (user?.role === 'ADMIN') {
         const u = await usersApi.getAll({ limit: 100 });
