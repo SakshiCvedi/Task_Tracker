@@ -13,7 +13,7 @@ import tasksRouter from './modules/tasks/tasks.router';
 const app = express();
 app.use(cors({
   origin: ['http://localhost:5173',
-    'https://task-tracker-eta-drab-36.vercel.app'
+    'task-tracker-eta-drab-36.vercel.app'
   ],
   credentials: true,
 }));
