@@ -1,0 +1,25 @@
+// Configuration file for TypeScript. It tells the TypeScript compiler:
+
+// Which files to compile
+// Which JavaScript version to generate
+// How strict type checking should be
+// Where compiled files should go
+// How modules should be handled
+
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "module": "commonjs",
+        "lib": ["ES2020"],
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "sourceMap": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "dist"]
+}
